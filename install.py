@@ -1,4 +1,5 @@
 import os
+import subprocess
 import mysql.connector
 from dotenv import load_dotenv
 
@@ -8,7 +9,6 @@ load_dotenv()
 # Read MySQL credentials from environment variables
 db_user = os.getenv("DB_USER")
 db_password = os.getenv("DB_PASSWORD")
-
 # Connect to MySQL server
 cnx = mysql.connector.connect(user=db_user, password=db_password)
 
@@ -26,6 +26,9 @@ cursor.execute("""
         answer VARCHAR(255)
     )
 """)
+print('database flashcards created')
+
+subprocess.run(["python3", "flashcards.py"])
 
 # Commit the changes and close the connection
 cnx.commit()

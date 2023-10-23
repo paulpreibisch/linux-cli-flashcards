@@ -1,6 +1,7 @@
 import random
 import subprocess
 import mysql.connector
+import tty, termios, sys
 from colorama import Fore, init
 from getpass import getpass
 
@@ -103,13 +104,28 @@ def display_menu():
     print(Fore.BLUE+ "4) Select a different deck")
     print(Fore.WHITE+ "5) List decks")
     print(Fore.RED+ "Q) Quit\n")    
+    print("Choose an option: ", end="", flush=True)
+    choice = get_single_keypress()
+    print(choice)  # to echo back the choice after it's made
+    return choice.lower()
+
+def get_single_keypress():
+    """Get a single key press from user, depending on the OS."""
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+       tty.setraw(sys.stdin.fileno())
+       ch = sys.stdin.read(1)
+    finally:
+       termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
 
 if __name__ == "__main__":
     asked_questions = []
     deck = 'spanish'
     while True:
-        display_menu()
-        choice = getpass(prompt="Choose an option: ").lower()
+        choice = display_menu()
+        
         if choice == 'q':
             break
         elif choice == '1':
