@@ -17,6 +17,8 @@ DB_PASSWORD=your_db_password
 
 *Installation:*
 ```
+sudo apt install translate-shell
+sudo apt install espeak-ng
 py install.py
 ```
 
