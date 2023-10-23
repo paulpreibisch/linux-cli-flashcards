@@ -1,26 +1,29 @@
-This program will create a flashcard program that you can run on the command line.
+This python flashcard program is run on the command line by typing: python flashcards.py
 
-![image](https://github.com/paulpreibisch/linux-cli-flashcards/assets/19810611/d1ed15fa-ada8-4b3a-a032-40706c042cc4)
+I created it for fun, as I am currently studying Spanish and always have my terminal open when at the computer.
 
-Before running this program, make sure you have the `mysql-connector-python` library installed. You can install it using pip:
+Linux CLI Flashcards uses translate-shell, a separate Linux program for command line translation, which is piped into my program when creating flash cards. Therefore, you will need to ```sudo apt install translate-shell``` first.
+
+It also uses espeak-ng for voice synthesis so we can have audible prompts when studying. Therefore, you will need to do a ```sudo apt install espeak-ng```
+
+Next, please also have mysql installed. 
+edit the .env file with your dB credentials.
+
+Next, install the required python libraries 
+
 
 ```
 pip install mysql-connector-python
 pip install colorama
 ```
 
-Create a `.env` file in the same directory as the Python program and add the following lines:
+finally, run ```python install.py``` which will initialize the database.
 
-```
-DB_USERNAME=your_db_user_name
-DB_PASSWORD=your_db_password
-```
+![image](https://github.com/paulpreibisch/linux-cli-flashcards/assets/19810611/d1ed15fa-ada8-4b3a-a032-40706c042cc4)
 
-*Installation:*
-```
-sudo apt install translate-shell
-sudo apt install espeak-ng
-py install.py
-```
 
+You can run the program by typing 
+```
+python flashcards.py
+```
 
