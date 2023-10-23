@@ -6,6 +6,7 @@ Before running this program, make sure you have the `mysql-connector-python` lib
 
 ```
 pip install mysql-connector-python
+pip install colorama
 ```
 
 Create a `.env` file in the same directory as the Python program and add the following lines:
